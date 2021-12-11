@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>HU Calendar</title>
+  <link rel="stylesheet" href="static/index.css">
+</head>
+
+<body>
+
+  <a href="search"><button class="button button1">Browse</button></a>
+  {% if current_user.is_authenticated %}
+  <a href="signout"><button class="button button2">Sign Out</button></a>
+  <a href="calendar"><button class="button4">View Calendar</button></a>
+  {% else %}
+  <a href="login"><button class="button button2">Sign In</button></a>
+  {% endif %}
+  <img class="smalllogo" src="static/HUlogo.png">
+
+  <div class="center-text">
+    <h1 style="grid-row: 2">Let's do something <u>together</u>.</h1>
+    <h2 style="grid-row: 4">Join to find HU clubs and events:</h2>
+    <div style="grid-row: 6; display: flex; justify-content: center;">
+      <a href="signup"><button class="button button3">Get Started</button></a>
+    </div>
+  </div>
+
+</body>
+
+</html>

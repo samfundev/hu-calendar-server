@@ -1,0 +1,28 @@
+index.html - landing page
+page2.html - browse page
+page3.html - sign in page
+page4.html - sign up page
+page5.html - create group/event page
+page6.html - does not exist
+page7.html - calandar page 
+
+--------------------------
+index -> button: get started -> page4.html
+      -> button: sign in -> page3.html
+      -> button: view calandar -> page7.html 
+      -> button: browse -> page2.html
+
+page2.html -> button: view calandar -> page7.html
+           -> button: sign in -> page3.html 
+           -> button: submit query -> returns query results FROM database 
+
+page3.html -> button: sign in -> submits information TO database
+           -> button: forgot password -> querys FROM database 
+           -> button: not signed up? -> page4.html 
+
+page4.html -> button: sign up -> submits information TO database 
+
+page5.html -> button: create -> submits information TO database 
+
+page7.html -> button: create club/event -> page5.html #button not yet implemented
+      

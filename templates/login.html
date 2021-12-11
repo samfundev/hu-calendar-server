@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HU Calendar</title>
+  <style>
+    body {
+      height: 85vh;
+      background: hsl(120, 100%, 15%) url("static/greenbackground.jpg") no-repeat;
+      repeat;
+
+    }
+
+    input[type=text],
+    input[type=password],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      font-size: 14px;
+      font-family: sans-serif;
+
+      width: 100%;
+      background-color: green;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: 1px solid black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #67E245;
+    }
+
+    .button {
+      font-size: 14px;
+      font-family: sans-serif;
+
+      display: block;
+      box-sizing: border-box;
+      text-decoration: none;
+      text-align: center;
+      width: 100%;
+      background-color: green;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: 1px solid black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #67E245;
+    }
+
+    div {
+      margin: 100px;
+      border-radius: 5px;
+      background-color: white;
+      padding: 20px;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+  <div>
+    <form action="/login" method="post">
+      <label for="first">First Name</label>
+      <input type="text" id="first" name="first" placeholder="First name">
+
+      <label for="last">Last Name</label>
+      <input type="text" id="last" name="last" placeholder="Last name">
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Password">
+
+      <input type="submit" value="Sign In">
+      <input class="fake" type="submit" value="Forgot Password">
+      <!-- This should link nowhere; just for looks (currently) -->
+    </form>
+    <a class="button" href="signup">Not Signed Up?</a>
+  </div>
+
+  <script>
+    document.querySelector("button.fake").addEventListener("click", () => alert("Sorry, just for looks!"));
+  </script>
+
+</body>
+
+</html>

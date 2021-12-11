@@ -1,0 +1,181 @@
+
+body {
+    height: 90vh;
+    background-color: white;
+}
+
+
+/* background header */
+.background{
+  background: hsl(120, 100%, 15%) url("greenbackground.jpg") no-repeat; repeat;
+  text-align: center;
+  padding: 50px;
+  background-size: cover;
+}
+
+/* Small HU logo */
+.smalllogo {
+  height: 85px;
+  width: 85px;
+  position: absolute;
+  left: .5%;
+  top: 1%;
+}
+
+/* Rounded rectangle for buttons */
+  .rectangle {
+  height: 50px;
+  width: 100px;
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Button class */
+.button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: .7s;
+  cursor: pointer;
+}
+
+/* 'Sign in' button */
+.button2 {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  position: absolute;
+  right: 1%;
+  top: 3%;
+
+}
+
+/* 'Browse' button */
+.button1 {
+  border: none;
+  color: white;
+  padding: 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 1px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 5px;
+  position: absolute;
+  right: 8%;
+  top: 4.7%;
+}
+
+/* date */
+#date {
+  position: absolute;
+  color: white;
+  top: 6.5%;
+  left: 6%;
+
+}
+/* Todays Date is: */
+h6 {
+  position: absolute;
+  color: white;
+  top: 3.5%;
+  left: 6%;
+}
+
+.calendar-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 200%;
+}
+
+.calendar {
+  margin: 15px;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
+
+.day {
+  padding: 10px;
+}
+
+.days-of-week-container,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: right;
+}
+
+.calendar-days .day:first-child {
+  grid-column: 7;
+}
+
+
+.calendar-days .day:hover {
+  background-color: red;
+  color: white;
+}
+
+.event {
+  font-size: 75%;
+  background-color: green;
+  color: white;
+  margin: 5px;
+  padding: 0px 5px;
+  border-radius: 5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.weekday {
+  text-align: center;
+}
+
+.month {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 5px;
+}
+
+.month span {
+  text-align: center;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  justify-content: center;
+  align-items: center;
+}
+
+.popup > div {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.description {
+  font-family: sans-serif;
+  font-size: 100%;
+  color: black;
+}

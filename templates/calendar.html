@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html>
+
+
+<head>
+  <title>HU Calendar</title>
+  <link rel="stylesheet" href="static/page7style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="background"></div>
+  <a href="/"><img class="smalllogo" src="static/HUlogo.png"></a>
+  <a href="create"><button class="button1" style="right: 13%">Create Event</button></a>
+  {% if current_user.is_authenticated %}
+  <a href="signout"><button class="button button2">Sign Out</button></a>
+  {% else %}
+  <a href="login"><button class="button button2">Sign In</button></a>
+  {% endif %}
+  <a href="search"><button class="button1">Browse</button></a>
+  <h6>Todays's date is:</h6>
+  <p id="date"></p>
+
+  <div class="calendar-container">
+    <div class="calendar">
+      <div class="month">
+        <button class="btn btn-secondary left">&lt;</button>
+        <span></span>
+        <button class="btn btn-secondary right">&gt;</button>
+      </div>
+      <div class="days-of-week-container">
+        <div class="weekday">Su</div>
+        <div class="weekday">Mo</div>
+        <div class="weekday">Tu</div>
+        <div class="weekday">We</div>
+        <div class="weekday">Th</div>
+        <div class="weekday">Fr</div>
+        <div class="weekday">Sa</div>
+      </div>
+      <div class="calendar-days">
+        <div class="day">
+          <div>1</div>
+        </div>
+        <div class="day">
+          <div>2</div>
+        </div>
+        <div class="day">
+          <div>3</div>
+        </div>
+        <div class="day">
+          <div>4</div>
+        </div>
+        <div class="day">
+          <div>5</div>
+        </div>
+        <div class="day">
+          <div>6</div>
+        </div>
+        <div class="day">
+          <div>7</div>
+        </div>
+        <div class="day">
+          <div>8</div>
+        </div>
+        <div class="day">
+          <div>9</div>
+        </div>
+        <div class="day">
+          <div>10</div>
+        </div>
+        <div class="day">
+          <div>11</div>
+        </div>
+        <div class="day">
+          <div>12</div>
+        </div>
+        <div class="day">
+          <div>13</div>
+        </div>
+        <div class="day">
+          <div>14</div>
+        </div>
+        <div class="day">
+          <div>15</div>
+        </div>
+        <div class="day">
+          <div>16</div>
+        </div>
+        <div class="day">
+          <div>17</div>
+        </div>
+        <div class="day">
+          <div>18</div>
+        </div>
+        <div class="day">
+          <div>19</div>
+        </div>
+        <div class="day">
+          <div>20</div>
+        </div>
+        <div class="day">
+          <div>21</div>
+        </div>
+        <div class="day">
+          <div>22</div>
+        </div>
+        <div class="day">
+          <div>23</div>
+        </div>
+        <div class="day">
+          <div>24</div>
+        </div>
+        <div class="day">
+          <div>25</div>
+        </div>
+        <div class="day">
+          <div>26</div>
+        </div>
+        <div class="day">
+          <div>27</div>
+        </div>
+        <div class="day">
+          <div>28</div>
+        </div>
+        <div class="day">
+          <div>29</div>
+        </div>
+        <div class="day">
+          <div>30</div>
+        </div>
+        <div class="day">
+          <div>31</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup">
+    <div>
+      <h2 class="title"></h2>
+      <span class="date"></span> - <span class="owner"></span>
+      <div class="location"></div>
+      <br>
+      <pre class="description"></pre>
+    </div>
+  </div>
+
+
+
+
+  <script>
+    n = new Date();
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+
+    let events = [];
+    fetch("/events")
+      .then(response => response.json())
+      .then(data => {
+        events = data;
+        update();
+      })
+      .catch(console.error);
+
+    // Month control
+    const month = document.querySelector(".month");
+    const left = month.querySelector(".month button.left");
+    const right = month.querySelector(".month button.right");
+    const monthText = month.querySelector(".month span");
+    let currentDate = new Date();
+
+    function modulo(n, m) {
+      return ((n % m) + m) % m;
+    }
+
+    left.addEventListener("click", () => {
+      if (currentDate.getMonth() == 0) {
+        currentDate.setFullYear(currentDate.getFullYear() - 1);
+      }
+
+      currentDate.setMonth(modulo(currentDate.getMonth() - 1, 12));
+      update();
+    });
+
+    right.addEventListener("click", () => {
+      if (currentDate.getMonth() == 11) {
+        currentDate.setFullYear(currentDate.getFullYear() + 1);
+      }
+
+      currentDate.setMonth(modulo(currentDate.getMonth() + 1, 12));
+      update();
+    });
+
+    // Popup
+    const popup = document.querySelector(".popup");
+
+    popup.addEventListener("click", () => popup.style.display = null);
+
+    function displayEvent(event, date) {
+      popup.style.display = "flex";
+
+      popup.querySelector(".title").textContent = event[1];
+      popup.querySelector(".date").textContent = Intl.DateTimeFormat(navigator.language, { dateStyle: "medium", timeStyle: "short" }).format(date);
+      popup.querySelector(".location").textContent = `Location: ${event[2]}`;
+      popup.querySelector(".owner").textContent = event[4] + " " + event[5];
+      popup.querySelector(".description").textContent = event[6];
+      console.log(event);
+    }
+
+
+    // Events
+    let eventElements = [];
+    function update() {
+      monthText.textContent = Intl.DateTimeFormat(navigator.language, { month: "long", year: "numeric" }).format(currentDate);
+      const first = new Date(currentDate);
+      first.setDate(1);
+      const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const day = weekdays.indexOf(new Intl.DateTimeFormat("en", { weekday: "long" }).format(first)) + 1;
+      document.querySelector(".calendar-days .day:first-child").style.gridColumn = day;
+
+      for (const eventElement of eventElements) {
+        eventElement.remove();
+      }
+      eventElements = [];
+
+      const calendarDays = document.querySelector("div.calendar-days");
+      for (const event of events) {
+        const date = new Date(event[3] + "Z");
+
+        if (date.getMonth() != currentDate.getMonth() || date.getFullYear() != currentDate.getFullYear())
+          continue;
+
+        const eventElement = document.createElement("div");
+        eventElement.classList.add("event");
+        eventElement.textContent = event[1];
+        eventElement.addEventListener("click", () => displayEvent(event, date))
+        calendarDays.children.item(date.getDate() - 1).append(eventElement);
+
+        eventElements.push(eventElement);
+      }
+    }
+  </script>
+</body>
+
+</html>

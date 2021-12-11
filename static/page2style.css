@@ -1,0 +1,111 @@
+
+  body {
+      height: 90vh;
+      background-color: white;
+  }
+
+
+  /* background header */
+  .background{
+    background: hsl(120, 100%, 15%) url("greenbackground.jpg") no-repeat; repeat;
+    text-align: center;
+    padding: 50px;
+    background-size: cover;
+  }
+
+  /* Small HU logo */
+  .smalllogo {
+    height: 85px;
+    width: 85px;
+    position: absolute;
+    left: .5%;
+    top: 1%;
+  }
+
+  /* Rounded rectangle for buttons */
+   .rectangle {
+   height: 50px;
+   width: 100px;
+   background-color: #555;
+   border-radius: 5px;
+ }
+
+  /* Button class */
+  .button {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: .7s;
+    cursor: pointer;
+  }
+
+  /* 'Sign in' button */
+  .button2 {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    right: 1%;
+    top: 3%;
+
+  }
+
+  /* 'View Calandar' button */
+  .button4 {
+    border: none;
+    color: white;
+    padding: 1px 1px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1px 1px;
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    position: absolute;
+    right: 8%;
+    top: 4.7%;
+  }
+
+  /* date */
+  #date {
+    position: absolute;
+    color: white;
+    top: 6.5%;
+    left: 6%;
+
+  }
+  /* Todays Date is: */
+  h6 {
+    position: absolute;
+    color: white;
+    top: 3.5%;
+    left: 6%;
+  }
+  /* form formatting */
+  .forms {
+  text-align: center;
+  }
+
+table {
+  margin: 30px;
+  width: calc(100% - 60px);
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 0.5em 1em;
+}
+
+th {
+  text-align: center;
+}

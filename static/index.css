@@ -1,0 +1,129 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: hsl(120, 100%, 15%) url("greenbackground.jpg") no-repeat; repeat;
+  margin: 0;
+}
+
+h1 {
+  color: white;
+  font-size: 80px;
+  text-align: center;
+  margin: 0;
+}
+
+h2 {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  margin: 0;
+}
+
+/* Rounded rectangle for buttons */
+  .rectangle {
+  height: 50px;
+  width: 100px;
+  background-color: #555;
+  border-radius: 5px;
+}
+
+/* Button class */
+.button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: .7s;
+  cursor: pointer;
+}
+
+/* 'Browse' button */
+.button1 {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  position: absolute;
+  left: 10%;
+  top: 4%;
+}
+
+/* 'Browse' button HOVER effect */
+.button1:hover {
+  background-color: white;
+  color: black;
+}
+
+/* 'Sign in' button */
+.button2 {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  position: absolute;
+  right: 2%;
+  top: 4%;
+
+}
+
+/* 'Sign in' button HOVER effect */
+.button2:hover {
+  background-color: white;
+  color: black;
+}
+
+/* 'Get Started' button */
+.button3 {
+  background-color: #cfac67;
+  color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+/* 'Get Started' HOVER effect */
+.button3:hover {
+  background-color: white;
+  color: black;
+}
+
+/* 'View Calandar' button */
+.button4 {
+  border: none;
+  color: white;
+  padding: 1px 1px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 1px;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  right: 9%;
+  top: 5.6%;
+}
+
+
+/* Small HU logo */
+.smalllogo {
+  height: 115px;
+  width: 115px;
+  position: absolute;
+  left: .5%;
+  top: 1%;
+}
+
+.center-text {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto 50px auto 20px auto 1fr;
+  font-family: sans-serif;
+}

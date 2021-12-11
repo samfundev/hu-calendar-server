@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>HU Calendar</title>
+  <style>
+    body {
+      height: 50vh;
+      background: hsl(120, 100%, 15%) url("static/greenbackground.jpg") no-repeat;
+      repeat;
+
+    }
+
+    input[type=text],
+    input[type=datetime-local],
+    select {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type=submit] {
+      width: 100%;
+      background-color: green;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: 1px solid black;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #67E245;
+    }
+
+    div {
+      margin: 35px;
+      border-radius: 5px;
+      background-color: white;
+      padding: 5px;
+    }
+
+    h1 {
+      text-align: center;
+
+    }
+
+    p {
+      text-align: center;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: white;
+      font-size: 14px;
+      resize: none;
+      margin: 8px 0;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+  <div>
+    <h1>Event Creation</h1>
+    <p>Must be signed in to create Events; approval needed.</p>
+    <form action="/create_event" method="post">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" placeholder="Title">
+
+      <label for="date">Date</label>
+      <input type="datetime-local" id="date" name="date">
+
+      <label for="location">Location</label>
+      <input type="text" id="location" name="location" placeholder="Location">
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description"></textarea>
+
+      <input type="submit">
+    </form>
+
+  </div>
+
+  <script>
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
+      const data = new FormData(form);
+      const date = new Date(data.get("date")).toISOString();
+      data.set("date", date.substring(0, date.length - 1));
+
+      fetch(`/create_event`, { method: "POST", body: data })
+        .then(response => {
+          if (response.redirected) {
+            window.location.href = response.url;
+          }
+        })
+        .catch(console.error);
+
+      event.preventDefault();
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
